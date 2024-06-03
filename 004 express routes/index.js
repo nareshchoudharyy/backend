@@ -1,16 +1,14 @@
-const express = require('express')
+const express = require('express');
 const app = express();
-app
 app.get('/', (req,res)=>{
-    res.send('at default');
-});
-app.get('/home', (req,res)=>{
-    res.send('at home');
-});
-app.get('/another', (req,res)=>{
-    res.send('at another');
-});
-
+    res.send("At Home or default page(get)")
+})
+app.post('/', (req,res)=>{
+    res.send("At Home(post)")
+})
+app.get('/About',(req,res)=>{
+    res.send('At about page')
+})
 app.listen(5000, ()=>{
-    console.log("running")
+    console.log("Runing the app")
 })
