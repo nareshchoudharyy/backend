@@ -1,8 +1,7 @@
-export default Home = () => {
+import React from 'react'
 
-    return (
-        <>
-            <h1>This is home page</h1>
-        </>
-    )
+export default function Home() {
+  return (
+    <div className='bg-blue-900'>Home</div>
+  )
 }
