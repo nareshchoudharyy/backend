@@ -16,7 +16,7 @@ const insertData = async () => {
     const response = await adminCollection.insertOne({
         fname: "tuntun",
         lname: "mausi",
-        age: "12"
+        age: "6"
     })
     console.log(response);
 }
