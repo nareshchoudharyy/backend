@@ -69,7 +69,7 @@ app.post('/insert_users', async (req, res) => {
         const collection = await dbCollection();
         const response = await collection.insertMany(req.body);
         console.log(response)
-        res.status(200).json({ msg: 'Successfully added user', data: response })
+        res.status(200).json({ msg: 'Successfully added users', data: response })
 
     }
     catch (error) {
@@ -102,7 +102,7 @@ app.put('/update_users/:batch', async (req, res) => {
             req.params, {
             $set: req.body
         })
-        res.status(200).json({ msg: 'Successfully Updated user', data: response })
+        res.status(200).json({ msg: 'Successfully Updated users', data: response })
     }
     catch (error) {
         console.log(error)
@@ -117,7 +117,7 @@ app.delete('/delete_user/:name', async (req, res) => {
         const collection = await dbCollection();
         const response = await collection.deleteOne(req.params);
         console.log(response)
-        res.status(200).json({ msg: 'Successfully Updated user', data: response })
+        res.status(200).json({ msg: 'Successfully deleted user', data: response })
     }
     catch (error) {
         console.log(error)
@@ -132,7 +132,7 @@ app.delete('/delete_users/:batch', async (req, res) => {
         const collection = await dbCollection();
         const response = await collection.deleteMany(req.params);
         console.log(response)
-        res.status(200).json({ msg: 'Successfully Updated user', data: response })
+        res.status(200).json({ msg: 'Successfully deleted users', data: response })
     }
     catch (error) {
         console.log(error)
