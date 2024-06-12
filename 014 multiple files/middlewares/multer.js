@@ -10,12 +10,12 @@ const multerStorage = multer.diskStorage({
     })
 })
 
-// const upload = multer({storage:multerStorage}).fields([
-//     {name:'thumbnail', maxCount:2},
-//     {name:'images', maxCount:5}
-// ]);
+const upload = multer({storage:multerStorage}).fields([
+    {name:'thumbnail', maxCount:1},
+    {name:'images', maxCount:5}
+]);
 
 
-const upload = multer({storage:multerStorage}).array('thumbnail',2);
+// const upload = multer({storage:multerStorage}).array('thumbnail',2);
 
 module.exports = upload;    
