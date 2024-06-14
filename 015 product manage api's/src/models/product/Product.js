@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
-const { type } = require('os');
-const { boolean } = require('webidl-conversions');
 
 
 const productSchema = new mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required: true
     },
     description:{
         type:String,
@@ -25,20 +23,20 @@ const productSchema = new mongoose.Schema({
         required:true
     },
     images:{
-        type:Object,
+        type:Array,
         required:true
     },
     status:{
-        type:boolean,
+        type:Boolean,
         default:true
     },
     created_at:{
-        type:Object,
-        default:Date()
+        type:Date,
+        default:Date.now
     },
     updated_at:{
-        type:Object
+        type:Date
     }
 });
-const Product = mongoose.Model('products',productSchema);
+const Product = mongoose.model('products',productSchema);
 module.exports = Product;

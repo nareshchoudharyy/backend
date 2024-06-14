@@ -1,7 +1,23 @@
+const Product = require("../../models/product/Product");
 
 const insertProduct = async (req, res) => {
     try {
-        res.status(200).json({ msg: 'data fetched successfully' });
+        const { name, description, price, mrp } = req.body;
+        const thumbnail = req.files.thumbnail[0].filename;
+        const images = req.files.images.map((imgData) => {
+            return imgData.filename;
+        });
+        const data = new Product({
+            name,
+            description,
+            price,
+            mrp,
+            thumbnail,
+            images
+        })
+        const response = await data.save();
+        console.log('product inserted');
+        res.status(200).json({ msg: 'product inserted successfully', data: response });
     }
     catch (error) {
         console.log(error)
