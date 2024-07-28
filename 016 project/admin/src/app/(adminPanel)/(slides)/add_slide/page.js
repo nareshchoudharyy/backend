@@ -56,18 +56,18 @@ function page() {
                         <form action="" className='*:my-8' onSubmit={handleSubmit}>
                             <div className='flex flex-col gap-2'>
                                 <label htmlFor="sliderHeading">Slider Heading</label>
-                                <input type="text" id='sliderHeading' name='sliderHeading' className='border border-1 border-gray-400 p-2' />
+                                <input type="text" id='sliderHeading' required name='sliderHeading' className='border border-1 border-gray-400 p-2' />
                             </div>
                             <div className='flex flex-col gap-2'>
                                 <label htmlFor="sliderSubHeading">Slider Sub-Heading</label>
-                                <input type="text" id='sliderSubHeading' name='sliderSubHeading' className='border border-1 border-gray-400 p-2' />
+                                <input type="text" id='sliderSubHeading' required name='sliderSubHeading' className='border border-1 border-gray-400 p-2' />
                             </div>
                             <div className='my-4'>
                                 <label >Slider Image</label>
                                 <div className='flex justify-center items-center p-2 rounded'>
                                     <div className='w-[70%]'>
                                         <div className=' justify-center flex items-center'>
-                                            <input type="file" name='sliderImage' accept="image/*" className='w-100 hidden border border-gray-400' id='sliderImage' onChange={handleImageChange} />
+                                            <input type="file" required name='sliderImage' accept="image/*" className='w-100 hidden border border-gray-400' id='sliderImage' onChange={handleImageChange} />
                                             <input type="text" readOnly placeholder='Upload File' value={sliderImage} className='px-4 rounded-[10px_0px_0px_10px] border border-gray-400 w-[70%] h-[50px]' />
                                             <label htmlFor="sliderImage" className='border block  bg-[#4B49AC] text-white text-center leading-[50px]  w-[10%] rounded-[0px_20px_20px_0px] h-[50px] cursor-pointer'>Uplaod</label>
                                         </div>
@@ -79,7 +79,7 @@ function page() {
                             </div>
                             <div className='flex flex-col gap-2'>
                                 <label htmlFor="sliderDescription">Slider Description</label>
-                                <textarea name="sliderDescription" id="sliderDescription" className='border border-1 border-gray-400 p-2'></textarea>
+                                <textarea name="sliderDescription" required id="sliderDescription" className='border border-1 border-gray-400 p-2'></textarea>
                             </div>
                             <div className='flex flex-col gap-2'>
                                 <label >Slider Status</label>

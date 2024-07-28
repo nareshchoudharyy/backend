@@ -22,6 +22,7 @@ const viewVideos = require('./videos/viewVideos');
 //slides
 const addSlide = require('./slides/addSlide');
 const viewSlides = require('./slides/viewSlides');
+const deleteSlide = require('./slides/deleteSlide');
 
 module.exports = {
     //admin 
@@ -44,6 +45,7 @@ module.exports = {
     //slides
     addSlide,
     viewSlides,
+    deleteSlide,
     //OTP
     generateOtp,
     //users

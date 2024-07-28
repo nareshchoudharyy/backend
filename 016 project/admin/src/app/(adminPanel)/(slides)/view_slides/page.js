@@ -7,14 +7,14 @@ import { useRouter } from 'next/navigation';
 
 function page() {
     const router = new useRouter();
-    const [courseData, setCourseData] = useState([]);
-    const [coursesToDelete, setCoursesToDelete] = useState([]);
+    const [SlideData, setSlideData] = useState([]);
+    // const [coursesToDelete, setCoursesToDelete] = useState([]);
     const [filePath, setFilePath] = useState('');
-    const getCourses = async () => {
+    const getSlides = async () => {
         try {
-            const response = await axios.get('http://localhost:5500/courses/view_courses');
+            const response = await axios.get('http://localhost:5500/slides/view_slides');
             if (response.status !== 200) return alert('Something went wrong');
-            setCourseData(response.data.data);
+            setSlideData(response.data.data);
             setFilePath(response.data.filePath);
 
         } catch (error) {
@@ -28,8 +28,8 @@ function page() {
         const newStatus = {
             status: (e.target.textContent == 'Active') ? false : true
         }
-        const response = await axios.put(`http://localhost:5500/courses/change_status/${id}`, newStatus);
-        getCourses()
+        const response = await axios.put(`http://localhost:5500/slides/change_status/${id}`, newStatus);
+        getSlides()
         if (response.status !== 200) return alert('Something went wrong');
     }
     const handleUpdate = (e) => {
@@ -38,25 +38,26 @@ function page() {
     }
     const deleteCourse = async (e) => {
         const id = e.target.value;
-        const confirmation = confirm('Are you sure you want to delete this Course');
+        const confirmation = confirm('Are you sure you want to delete this Slide');
         if (confirmation) {
-            const response = await axios.delete(`http://localhost:5500/courses/delete_course/${id}`);
-            getCourses()
+            console.log(id)
+            const response = await axios.delete(`http://localhost:5500/slides/delete_slide/${id}`);
+            getSlides()
             if (response.status !== 200) return alert('Something went wrong');
         }
         else {
-            alert('course not deleted')
+            alert('slide not deleted')
         }
     }
-    const deleteAllCourses = (e) => {
-        console.log(e.target.value)
-        const data = courseData.map((value) => {
-            return value._id;
-        })
-        console.log(data)
-    }
+    // const deleteAllCourses = (e) => {
+    //     console.log(e.target.value)
+    //     const data = SlideData.map((value) => {
+    //         return value._id;
+    //     })
+    //     console.log(data)
+    // }
     useEffect(() => {
-        getCourses();
+        getSlides();
     }, [])
 
     return (
@@ -73,13 +74,12 @@ function page() {
                             <thead>
                                 <tr className='*:border *:border-slate-600'>
                                     <th>S.no</th>
-                                    <th>
+                                    {/* <th>
                                         <input type="checkbox" name="" id="" onClick={deleteAllCourses} />
                                         Delete
-                                    </th>
-                                    <th>Course Name</th>
-                                    <th>Fees</th>
-                                    <th>Duration</th>
+                                    </th> */}
+                                    <th>Slide Heading</th>
+                                    <th>Slide Sub Heading</th>
                                     <th>Description</th>
                                     <th>Image</th>
                                     <th>Status</th>
@@ -88,19 +88,18 @@ function page() {
                             </thead>
                             <tbody>
                                 {
-                                    courseData.map((value, index) => {
+                                    SlideData.map((value, index) => {
                                         return (
                                             <tr key={index}>
                                                 <td>{index + 1}</td>
-                                                <td>
+                                                {/* <td>
                                                     <input type="checkbox" name="" value={value._id} id={value._id} />
-                                                </td>
-                                                <td>{value.courseName}</td>
-                                                <td>{value.coursePrice}</td>
-                                                <td>{value.courseDuration}</td>
-                                                <td>{value.courseDescription}</td>
+                                                </td> */}
+                                                <td>{value.sliderHeading}</td>
+                                                <td>{value.sliderSubHeading}</td>
+                                                <td>{value.sliderDescription}</td>
                                                 <td>
-                                                    <img src={filePath + value.thumbnail} alt="" className='w-[100px]' />
+                                                    <img src={filePath + value.sliderImage} alt="" className='w-[100px]' />
                                                 </td>
                                                 <td>
                                                     <button value={value._id} className={`py-1 px-2 rounded mx-2 text-white ${value.status ? 'bg-[#22c55e]' : "bg-[#f87171]"}`} onClick={changeStatus}>{value.status ? 'Active' : "Inactive"}</button>

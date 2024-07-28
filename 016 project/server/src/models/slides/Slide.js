@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const slideSchema = mongoose.Schema({
-    slideHeading: String,
-    slideSubHeading: String,
-    slideDescription: String,
+    sliderHeading: String,
+    sliderSubHeading: String,
+    sliderDescription: String,
     sliderImage: String,
     status: {
         type: Boolean,
