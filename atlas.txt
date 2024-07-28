@@ -1,0 +1,6 @@
+naresh
+dbNCatlas
+
+mongodb+srv://naresh:<password>@cluster0.dt4ttg5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+mongodb+srv://naresh:dbNCatlas@cluster0.dt4ttg5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
